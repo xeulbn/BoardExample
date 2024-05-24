@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세페이지</title>
+    <style>
+        .detail-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: floralwhite;
+        }
+    </style>
+</head>
+<body>
+<div class="detail-box">
+<h2 th:text="${board.title}"></h2>
+    <div>
+        <table>
+            <tr>
+                <th>Name: </th>
+                <td th:text="${board.name}"></td>
+            </tr>
+            <tr>
+                <th>Content: </th>
+                <td th:text="${board.content}"></td>
+            </tr>
+            <tr>
+                <th>Created At: </th>
+                <td th:text="${#temporals.format(board.createdAt, 'yyyy/MM/dd HH:mm')}"></td>
+            </tr>
+        </table>
+        <div>
+            <a th:href="@{/boards}">List</a>
+            <a th:href="@{updateform?id={id}(id=${board.id})}">Edit</a>
+            <a th:href="@{deleteform?id={id}(id=${board.id})}">Delete</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
